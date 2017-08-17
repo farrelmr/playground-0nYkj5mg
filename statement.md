@@ -248,7 +248,7 @@ public class Main {
 public static void main(String[] args) {
 
 // }
-    TemporalAdjuster dueDateAdjuster = TemporalAdjusters.ofDateAdjuster((LocalDate localDate) -&amp;gt; localDate.plusWeeks(40));
+    TemporalAdjuster dueDateAdjuster = TemporalAdjusters.ofDateAdjuster((LocalDate localDate) -> localDate.plusWeeks(40));
 
     LocalDate startLocalDate = LocalDate.now();
     System.out.println("Due Date - " + startLocalDate.with(dueDateAdjuster));
