@@ -6,12 +6,12 @@ Before Java8 we had two date implementations – java.util.Date and java.util.Ca
 
 # Issues
 
-1. API Design – java.util.Date and java.util.Calendar both had issues including -
+* API Design – java.util.Date and java.util.Calendar both had issues including -
  * months starting from 0
  * in the case of Date year starting from 1900
  * Date also represented a point in time, seconds from the epoch, while its toString method included a TimeZone
  * No single class representing Time or Date
-2. DateFormat not thread safe
+* DateFormat not thread safe
 
 De-facto standards – Joda-Time evolved as a defacto standard for Java dates, and it is to Java8’s credit that they developed the Java8 JSR-310 API’s with the main joda-time developer Stephen Colebourne.
 
