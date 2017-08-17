@@ -2,7 +2,7 @@
 
 This post originally appeared in my blog, [www.javabullets.com](https://www.javabullets.com/java8-date-and-time-examples/) as part of a series covering Java8 features.
 
-Before Java8 we had two date implementations – java.util.Date and java.util.Calendar. These implementations had numerous issues which Java8 seeks to resolve. This post considers these issues, as well as providing a examples using the java.time API.
+We had two date implementations before Java8 – java.util.Date and java.util.Calendar. There were numerous issues with these implementations which Java8 seeks to resolve with its new java.time API.
 
 # Issues
 
@@ -13,7 +13,7 @@ Before Java8 we had two date implementations – java.util.Date and java.util.Ca
   * No single class representing Time or Date
 * DateFormat not thread safe
 
-De-facto standards – Joda-Time evolved as a defacto standard for Java dates, and it is to Java8’s credit that they developed the Java8 JSR-310 API’s with the main joda-time developer Stephen Colebourne.
+Joda-Time evolved as a defacto standard for Java dates, and its lead developer Stephen Colebourne defined the Java8 JSR-310 API.
 
 # New Features
 
@@ -28,14 +28,41 @@ You can create a runnable code snippet using the `runnable` keyword:
 
 ```java runnable
 // { autofold
-public class Main {
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+public class DateTimeExamples {
 
 public static void main(String[] args) {
+
 // }
 
-String message = "Hello World!";
-System.out.println(message);
+		System.out.println("\npreJava8DateAndCalendar\n");
 
+		Date today = new Date();
+		System.out.println("Note the time includes the default timezone - " + today.toString());
+
+		Date twentySevenFeb2017Date = new Date(117, 1, 27);
+		System.out.println("Now deprecated new Date(day, month, year) - but note month starts at zero, and year 1900 - " + twentySevenFeb2017Date);
+
+		Calendar twentySevenFeb2017Calendar = new GregorianCalendar(2017,1,27);
+		System.out.println("Calendar - month starts at zero, and but year fixed - " + twentySevenFeb2017Calendar.getTime());
+
+		DateFormat ddMMyyySDF = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println("DateFormat not ThreadSafe - " + ddMMyyySDF.format(twentySevenFeb2017Date));
 //{ autofold
 }
 
