@@ -22,9 +22,13 @@ Joda-Time evolved as a defacto standard for Java dates, and its lead developer S
 3. Immutable
 4. Factory methods
 
-# Examples
+# Pre-Java8 Date and Calendar Examples
 
-You can create a runnable code snippet using the `runnable` keyword:
+The following snippet demonstrates -
+
+* toString method contains a Timezone
+* Date - Month Starts at zero, and year at 1900
+* Calendar - Month still starts at zeron, but the year is now fixed
 
 ```java runnable
 // { autofold
@@ -49,9 +53,6 @@ public class Main {
 public static void main(String[] args) {
 
 // }
-
-		System.out.println("\npreJava8DateAndCalendar\n");
-
 		Date today = new Date();
 		System.out.println("Note the time includes the default timezone - " + today.toString());
 
